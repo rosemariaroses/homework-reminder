@@ -8,6 +8,7 @@ import serveStatic from "serve-static";
 const bare = createBareServer("/bare/");
 const serve = serveStatic(fileURLToPath(new URL("../static/", import.meta.url)), { fallthrough: false });
 var server;
+server = createHttpServer();
 
 server.on("request", (req, res) => {
   if(bare.shouldRoute(req)) bare.routeRequest(req, res); else {
